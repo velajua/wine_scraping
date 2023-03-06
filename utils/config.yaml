@@ -1,0 +1,12 @@
+COUNTRIES: ['', 'France', 'Argentina', 'Italy']
+
+FILL: {
+  'Appellation': '',
+  'Sweetness': '',
+  'Wine Type': '',
+  'Closure': '',
+  'Region': '',
+  'Brand': '',
+  'Body': '',
+  'Oak': '',
+}
