@@ -1,5 +1,5 @@
 # Wine Data: From Mining to Visualization
-This project aims to scrape wine data from the (Decanter website)[https://www.decanter.com/wine-reviews/search/france/page/1/3]
+This project aims to scrape wine data from the [Decanter website](https://www.decanter.com/wine-reviews/search/france/page/1/3)
 ('France' per default) and visualize it using Streamlit. The scraping is done using Selenium, and the data is stored in a CSV file,
 which can then be used for data analysis and visualization (using streamlit in this case). 
 
