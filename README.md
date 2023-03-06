@@ -24,7 +24,7 @@ The scraper's operation through the webpage is as follows:
 
 ![scraping_diagram](img/scraping_diagram.png "scraping_diagram")
 
-The following command calls the the selenium web-scraper:
+The following command calls the selenium web-scraper:
 ```python
 python wine_scraping.py -c <country_name> -s -p <number_of_pages>
 ```
@@ -34,14 +34,22 @@ Here, <country_name> is the name of the country you want to scrape the data for 
 Once the data scraping is completed, you will find the data stored in a CSV file named wine_data_<country_name>.csv.
 
 
+## Visualization (Streamlit)
+### Usage
 
 
-
-
-
-# modified line:
-# offset_order = offset_dict[collection.offset_position],
-# for: offset_order = dict() in exporter.py
-
-
+The following command runs the streamlit server:
+```python
 streamlit run wine_analysis.py
+```
+
+
+### Error note:
+While running streamlit it is possible to encounter an error in matplotlib's exporter.py on the following line:
+```python
+offset_order = offset_dict[collection.offset_position]
+```
+It should be modified to:
+```python
+offset_order = dict()
+```
