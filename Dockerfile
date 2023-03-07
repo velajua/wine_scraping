@@ -23,13 +23,5 @@ COPY . /app
 # Install the dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Set display variable
-ENV DISPLAY=:99
-
 # Start Chrome and execute the command
-CMD ["sh", "-c", "\
-    Xvfb :99 -screen 0 1024x768x24 -ac +extension GLX +render -noreset & \
-    && sleep 3 \
-    && google-chrome-stable --no-sandbox --disable-dev-shm-usage --disable-gpu --headless --remote-debugging-port=9222 http://localhost:8080 & \
-    && sleep 3 \
-    && streamlit run --server.port 8501 wine_analysis.py"]
+CMD ["streamlit run wine_analysis.py"]
