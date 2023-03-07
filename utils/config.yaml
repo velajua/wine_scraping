@@ -1,4 +1,4 @@
-COUNTRIES: ['', 'France', 'Argentina', 'Italy']
+COUNTRIES: ['', 'France', 'Argentina', 'Italy', 'Spain']
 
 FILL: {
   'Appellation': '',
