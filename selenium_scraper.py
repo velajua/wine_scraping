@@ -115,7 +115,7 @@ def main(country: str = 'france', headless: bool = False,
         headless: Shows the chrome drivers.
         pages: The number of pages to scrape.
     """
-    with ThreadPoolExecutor(max_workers=4) as executor:
+    with ThreadPoolExecutor(max_workers=6) as executor:
         futures = [executor.submit(get_wine_info, page+1, country,
                                    headless)
                    for page in range(pages)]
