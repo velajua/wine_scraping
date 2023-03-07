@@ -9,6 +9,8 @@ import plotly.graph_objects as go
 from PIL import Image
 from envyaml import EnvYAML
 
+# from google.cloud import storage    # Uncomment to save/load the csv in/from GCS
+
 from typing import List, Tuple
 
 from utils.utils import float_safe_cast
@@ -32,6 +34,10 @@ def load_data(name_: str) -> Tuple[pd.DataFrame, List[str]]:
     Returns:
         Tuple of data frame and a list of unique grape categories.
     """
+    # storage_client = storage.Client()    # Uncomment to save/load the csv in/from GCS
+    # bucket = storage_client.bucket('my-bucket-name')
+    # blob = bucket.blob(f'wine_data_{name_}.csv')
+    # blob.download_to_filename(f'{FILE_PREF}wine_data_{name_}.csv')
     data = pd.read_csv(f'{FILE_PREF}wine_data_{name_}.csv',
                  sep=';', index_col=0)
 
