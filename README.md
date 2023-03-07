@@ -36,7 +36,8 @@ Once the data scraping is completed, you will find the data stored in a CSV file
 
 
 ## Visualization (Streamlit)
-### Usage
+### How to run
+#### Local
 
 This is a Streamlit app that allows the user to explore wine data for various countries. 
 It is a script that provides a web-based user interface for analyzing wine data scraped from the Decanter website. The script is built using the Streamlit library, which is used to create the interactive user interface. The script loads wine data from a CSV file and provides various filters to allow the user to explore the data.
@@ -47,6 +48,13 @@ The following command runs the streamlit server:
 ```python
 streamlit run wine_analysis.py
 ```
+
+#### Docker
+
+1. Clone this repository.
+2. Build the container using the following command: `docker build -t wine_scraping .`.
+3. Run the container using the following command: `docker run -it -p 8501:8501 wine_scraping`.
+4. Navigate to `http://localhost:8501` in your web browser.
 
 An application demo can be found [here](url).
 
