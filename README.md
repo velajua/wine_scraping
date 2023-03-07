@@ -58,7 +58,7 @@ Here is how the application is viewed:
 
 
 ### Error note:
-While running streamlit it is possible to encounter an error in matplotlib's exporter.py on the following line:
+While running streamlit it is possible to encounter an error if using matplotlib's exporter.py for the graphs on the following line:
 ```python
 offset_order = offset_dict[collection.offset_position]
 ```
