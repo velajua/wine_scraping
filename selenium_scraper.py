@@ -7,12 +7,15 @@ import pandas as pd
 from typing import List, Dict
 from concurrent.futures import ThreadPoolExecutor
 
+from envyaml import EnvYAML
+
 from utils.utils import timed_retries
 from utils.selenium_utils import (getDriver, find_element_data,
                                   click_element, page_interaction,
                                   type_or_get_text)
 
 FILE_PREF: str = '' if 'wine_scraping' in os.getcwd() else '/tmp/'
+CONF = EnvYAML(os.path.join('utils', 'config.yaml'))
 
 
 @timed_retries(max_retries=6, minutes=2)
@@ -146,6 +149,9 @@ if __name__ == '__main__':
     args = parser.parse_args()
     country = args.country.lower() if args.country else 'france'
     headless = args.show if args.show else False
-    pages = args.pages if args.pages else 400
-    
-    main(country=country, headless=headless, pages=pages)
+    if country not in CONF:
+        print(f'Country {country} not recognized')
+    else:
+        pages = args.pages if args.pages else CONF[country]
+        main(country=country, headless=headless, pages=pages)
+
