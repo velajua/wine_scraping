@@ -27,5 +27,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 8080
 
 # Start Chrome and execute the command
-CMD ["streamlit run --server.port 8080 wine_analysis.py"]
+EXEC "streamlit run --server.port 8080 wine_analysis.py"
  
