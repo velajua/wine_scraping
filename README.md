@@ -47,7 +47,7 @@ The following command runs the streamlit server:
 ```python
 streamlit run wine_analysis.py
 ```
-
+An application demo can be found [here](url)
 Here is how the application is viewed:
 
 ![empty_app](img/streamlit_empty.png "empty_app")
