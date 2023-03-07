@@ -2,6 +2,8 @@ import os
 import argparse
 import pandas as pd
 
+# from google.cloud import storage    # Uncomment to save the csv in GCS
+
 from typing import List, Dict
 from concurrent.futures import ThreadPoolExecutor
 
@@ -121,8 +123,14 @@ def main(country: str = 'france', headless: bool = False,
                    for page in range(pages)]
     ans = [x for future in futures if future.result()
            for x in future.result()]
-    pd.DataFrame.from_records(ans).to_csv(
+    df = pd.DataFrame.from_records(ans)
+    df.to_csv(
         f'{FILE_PREF}wine_data_{country}.csv', sep=';')
+
+    # client = storage.Client()    # Uncomment to save the csv in GCS
+    # bucket = client.bucket('my-bucket-name')
+    # blob = bucket.blob('wine_data_{country}.csv')
+    # blob.upload_from_string(df.to_csv(index=False), content_type='text/csv')
 
 
 if __name__ == '__main__':
