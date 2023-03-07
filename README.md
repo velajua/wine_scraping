@@ -49,12 +49,13 @@ The following command runs the streamlit server:
 streamlit run wine_analysis.py
 ```
 
-#### Docker
+#### Docker local
 
 1. Clone this repository.
-2. Build the container using the following command: `docker build -t wine_scraping .`.
-3. Run the container using the following command: `docker run -it -p 8501:8501 wine_scraping`.
-4. Navigate to `http://localhost:8501` in your web browser.
+2. Modify the last line of the Dockerfile to: `streamlit run wine_analysis.py`
+3. Build the container using the following command: `docker build -t wine_scraping .`.
+4. Run the container using the following command: `docker run -it -p 8501:8501 wine_scraping`.
+5. Navigate to `http://localhost:8501` in your web browser.
 
 An application demo can be found [here](https://wine-scraping-4r64swfrtq-uc.a.run.app/).
 
