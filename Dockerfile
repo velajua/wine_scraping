@@ -24,4 +24,5 @@ COPY . /app
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Start Chrome and execute the command
-CMD ["streamlit run wine_analysis.py"]
+CMD ["streamlit run --server.port 8501 wine_analysis.py"]
+ 
