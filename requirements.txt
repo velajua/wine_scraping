@@ -1,0 +1,9 @@
+streamlit==1.13.0
+pandas==1.4.2
+plotly==5.10.0
+Pillow==8.2.0
+envyaml==1.10.211231
+selenium==3.141.0
+Unidecode==1.3.2
+webdriver-manager==3.8.4
+fake-useragent==0.1.11
