@@ -129,7 +129,7 @@ def main(country: str = 'france', headless: bool = False,
 
     # client = storage.Client()    # Uncomment to save/load the csv file in/from GCS
     # bucket = client.bucket('my-bucket-name')
-    # blob = bucket.blob('wine_data_{country}.csv')
+    # blob = bucket.blob(f'wine_data_{country}.csv')
     # blob.upload_from_string(df.to_csv(index=False), content_type='text/csv')
 
 
