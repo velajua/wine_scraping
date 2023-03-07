@@ -19,7 +19,7 @@ st.set_page_config(layout="wide", page_title="Wine Analysis",
                    page_icon=":Wine_Glass:")
 
 FILE_PREF = '' if 'wine_scraping' in os.getcwd() else '/tmp/'
-
+GCS = False
 CONF = EnvYAML(os.path.join('utils', 'config.yaml'))
 
 
@@ -39,6 +39,7 @@ def load_data(name_: str) -> Tuple[pd.DataFrame, List[str]]:
     # storage_client = storage.Client()    # Uncomment to save/load the csv in/from GCS
     # bucket = storage_client.bucket('my-bucket-name')
     # blob = bucket.blob(f'wine_data_{name_}.csv')
+    # GCS = True
     # blob.download_to_filename(f'{FILE_PREF}wine_data_{name_}.csv')
     # data = pd.read_csv(f'{FILE_PREF}wine_data_{name_}.csv',
     #              sep=';', index_col=0)
@@ -118,9 +119,9 @@ with st.sidebar:
         st.markdown('General Actions:')
         download_submit = st.download_button(
             'Download Raw Data', data=pd.read_csv(
-                f'wine_data_{name_.lower()}.csv', sep=';',
-                index_col=0).to_csv().encode('utf-8'),
-            file_name=f'wine_data_{name_}.csv')
+                f'{FILE_PREF if GCS else ''}wine_data_{name_.lower()}.csv',
+              sep=';', index_col=0).to_csv().encode('utf-8'),
+          file_name=f'wine_data_{name_}.csv')
         st.write('\n-------------')
 
 # User Interface
