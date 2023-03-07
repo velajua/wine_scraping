@@ -48,6 +48,12 @@ The following command runs the streamlit server:
 streamlit run wine_analysis.py
 ```
 
+Here is how the application is viewed:
+
+![empty_app](img/streamlit_empty.png "empty_app")
+
+![france_app](img/streamlit_france.png "france_app")
+
 
 ### Error note:
 While running streamlit it is possible to encounter an error in matplotlib's exporter.py on the following line:
