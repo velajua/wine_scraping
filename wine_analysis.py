@@ -119,7 +119,7 @@ with st.sidebar:
         st.markdown('General Actions:')
         download_submit = st.download_button(
             'Download Raw Data', data=pd.read_csv(
-                f'{FILE_PREF if GCS else ''}wine_data_{name_.lower()}.csv',
+                f'{FILE_PREF if GCS else ""}wine_data_{name_.lower()}.csv',
               sep=';', index_col=0).to_csv().encode('utf-8'),
           file_name=f'wine_data_{name_}.csv')
         st.write('\n-------------')
