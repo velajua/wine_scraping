@@ -23,6 +23,9 @@ COPY . /app
 # Install the dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Expose the port
+EXPOSE 8080
+
 # Start Chrome and execute the command
-CMD ["streamlit run --server.port 8501 wine_analysis.py"]
+CMD ["streamlit run --server.port 8080 wine_analysis.py"]
  
