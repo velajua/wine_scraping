@@ -34,12 +34,14 @@ def load_data(name_: str) -> Tuple[pd.DataFrame, List[str]]:
     Returns:
         Tuple of data frame and a list of unique grape categories.
     """
+    data = pd.read_csv(f'wine_data_{name_}.csv',
+                 sep=';', index_col=0)
     # storage_client = storage.Client()    # Uncomment to save/load the csv in/from GCS
     # bucket = storage_client.bucket('my-bucket-name')
     # blob = bucket.blob(f'wine_data_{name_}.csv')
     # blob.download_to_filename(f'{FILE_PREF}wine_data_{name_}.csv')
-    data = pd.read_csv(f'{FILE_PREF}wine_data_{name_}.csv',
-                 sep=';', index_col=0)
+    # data = pd.read_csv(f'{FILE_PREF}wine_data_{name_}.csv',
+    #              sep=';', index_col=0)
 
     data['Alcohol'] = data['Alcohol'].fillna(0).apply(
         lambda x: float_safe_cast(0 if str(x).lower() in
