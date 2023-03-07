@@ -37,6 +37,10 @@ Once the data scraping is completed, you will find the data stored in a CSV file
 ## Visualization (Streamlit)
 ### Usage
 
+This is a Streamlit app that allows the user to explore wine data for various countries. 
+It is a script that provides a web-based user interface for analyzing wine data scraped from the Decanter website. The script is built using the Streamlit library, which is used to create the interactive user interface. The script loads wine data from a CSV file and provides various filters to allow the user to explore the data.
+
+The user interface consists of a sidebar containing a dropdown menu for selecting the country of interest, along with various filter options for selecting wine characteristics such as region, producer, sweetness, wine type, and so on. The main panel of the interface displays a selection of graphs generated using the Plotly library, including bar charts, scatter plots, and box plots.
 
 The following command runs the streamlit server:
 ```python
