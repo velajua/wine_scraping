@@ -2,6 +2,8 @@ import pandas as pd
 import json
 import os
 
+"""Converts a JSON file scraped from Decanter's wine reviews page to a CSV file."""
+
 country = '''argentina'''
 
 filename = f'scrapy/decanter_{country}.json'
