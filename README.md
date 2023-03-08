@@ -10,10 +10,13 @@ Install the required packages using:
 pip install -r requirements.txt
 ```
 
-## Scraping (Selenium)
-### Usage
+## Scraping
 
-This script is a web scraper that collects information about wines from the Decanter website.
+### Selenium
+
+#### Usage
+
+This script is a web scraper that collects information about wines from the Decanter website using a Chrome driver.
 The script uses Selenium, an open-source tool for automating web browsers, to scrape information about wines from a particular country.
 The script uses a thread pool executor to run the scraping function on multiple threads simultaneously.
 It uses the Selenium driver to navigate to the Decanter website for the specified country and page,
@@ -34,6 +37,22 @@ Here, <country_name> is the name of the country you want to scrape the data for 
 <number_of_pages> is the number of pages you want to scrape (default: 400), and the -s flag is optional and shows the Chrome drivers.
 Once the data scraping is completed, you will find the data stored in a CSV file named wine_data_<country_name>.csv.
 
+### Scrapy
+
+#### Usage
+
+This code is a web scraper that collects wine data from the Decanter website for a specified country using Scrapy. It uses a config file to determine the allowed countries and the number of pages to scrape for each country. The spider navigates to the website and extracts information such as wine title, grapes, and other details. It parses the grape information from the data scraped from the website. The spider returns a list of dictionaries, with each dictionary containing information about a particular wine. The data is exported to a JSON file using the Scrapy built-in JSON feed exporter. The data is then loaded into a Pandas DataFrame and saved as a CSV file.
+
+The scraper's operation through the webpage is as follows:
+
+![scraping_diagram_scrapy](img/scraping_diagram_scrapy.png "scraping_diagram_scrapy")
+
+The following command calls the scrapy web-scraper:
+```python
+scrapy_caller.sh <country_name>
+```
+
+Here, <country_name> is the name of the country you want to scrape the data for (default: 'france'). If a country outside of the YAML data is specified, an error will be shown.
 
 ## Visualization (Streamlit)
 ### How to run
@@ -72,8 +91,11 @@ Here is how the application is viewed:
 
 ![france_app](img/streamlit_france.png "france_app")
 
+### Adding Data
 
-### Error note:
+In the `utils/config.yaml` file, new data can be added for visualization using the COUNTRIES key as well as the key: value pair correpsonding to the country. Keep in mind that either one of the scrapers need to run to provide the new information.
+
+### Error note
 While running streamlit it is possible to encounter an error if using matplotlib's exporter.py for the graphs on the following line:
 ```python
 offset_order = offset_dict[collection.offset_position]
