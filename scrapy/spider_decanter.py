@@ -1,5 +1,3 @@
-# scrapy runspider spider_decanter.py -a limit=10
-
 import os
 import re
 import scrapy
@@ -7,14 +5,27 @@ import scrapy
 from envyaml import EnvYAML
 from scrapy.crawler import CrawlerProcess
 
+from typing import List, Dict, Any
+
 CONF = EnvYAML(os.path.join('utils', 'config.yaml'))
 
 global page, url, country_, limit_
-url = 'https://www.decanter.com/wine-reviews/search/country/page/{page}/3'
-page, limit_, country_ = 0, 0, ''
+url: str = 'https://www.decanter.com/wine-reviews/search/country/page/{page}/3'
+page: int = 0
+limit_: int = 0
+country_: str = ''
 
 
-def grape_parsing(list_):
+def grape_parsing(list_: List[str]) -> List[str]:
+    """
+    Function to parse grape information from the data scraped from website.
+
+    Args:
+        list_: list of grape information
+
+    Returns:
+        list: parsed grape information
+    """
     out = []
     for i in range(0, len(list_), 2):
         if list_[i][0].isnumeric():
@@ -32,10 +43,17 @@ class SpiderDecanter(scrapy.Spider):
     global page, country_, limit_, url
     
     def __init__(self, country=None, limit=0, *args, **kwargs):
+        """
+        Constructor to initialize the spider.
+
+        Args:
+            country: name of the country to scrape data for
+            limit: limit of pages to scrape data from
+        """
         global country_, limit_
         super(SpiderDecanter, self).__init__(*args, **kwargs)
         if not country:
-            country = '''italy'''
+            country = '''argentina'''
         if country.capitalize() in CONF['COUNTRIES'] and not country.isnumeric():
             country_ = str(country.lower())
             self.country_ = country_
@@ -48,7 +66,7 @@ class SpiderDecanter(scrapy.Spider):
             print('limit', limit, 'is not numeric')
     
     name = 'decanter'
-    country_ = '''italy''' if not country_ else country_
+    country_ = '''argentina''' if not country_ else country_
     limit_ = CONF[country_] if not limit_ else limit_
     url = url.replace('country', country_)
 
